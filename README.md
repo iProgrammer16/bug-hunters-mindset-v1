@@ -50,6 +50,15 @@ It’s created for my own use but shared publicly so others can benefit too.
   ```bash
   cat list1.txt list2.txt list3.txt > all_word-lists.txt
   ```
+---
+
+## **Note: I will keep it updated always (Insha'Allah) 😊✨**
+
+---
+
+## **🧑‍💻 Author & Socials**
+You can follow and connect with me through the following link:
+[All Links:](https://linktr.ee/1ZeroDay) 🌐.
 
 ---
 
