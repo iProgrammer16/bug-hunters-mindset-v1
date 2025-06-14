@@ -57,7 +57,7 @@ It’s created for my own use but shared publicly so others can benefit too.
 
 ### 🔍 json2paths
 
-This tool finds hidden endpoints, especially on APIs. It fetches JSON responses from BurpSuite history and creates url-paths wordlist from JSON keys.
+This tool finds hidden endpoints, especially on APIs. It fetches JSON responses from BurpSuite history and creates url-paths wordlist from JSON keys.  
 **Tool:** [json2paths - GitHub Repository](https://github.com/s0md3v/dump/tree/master/json2paths)
 ![j2p image](images/j2p.png)
 
