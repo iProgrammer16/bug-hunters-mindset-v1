@@ -14,21 +14,23 @@ It’s created for my own use but shared publicly so others can benefit too.
 ### 🔹 Step 1: Generating a Company-Specific Wordlist
 
 - **Extracting in-page keywords**
-  - **Command:**  
+
+  - **Command:**
     ```bash
     cewl https://example.com --header "Cookie: PHPSESSID=7a9b4c2d8e3f1g5h6i7j8k9l0m1n2o3p" -d 5 -m 4
     ```
   - **Tool:** [CeWL - GitHub Repository](https://github.com/digininja/CeWL)
 
 - **Extracting URL keywords**
-  - **Command:**  
+
+  - **Command:**
     ```bash
     cat /path/to/urls.txt | tok
     ```
   - **Tool:** [tok by tomnomnom - GitHub](https://github.com/tomnomnom/hacks/tree/master/tok)
 
 - **Extracting keywords from JavaScript files**
-  - **Command:**  
+  - **Command:**
     ```bash
     cat /path/to/js-urls.txt | python3 getjswords.py
     ```
@@ -46,10 +48,52 @@ It’s created for my own use but shared publicly so others can benefit too.
 
 ### 🔹 Step 4: Combining All Lists
 
-- Combine all wordlists into one final file:  
+- Combine all wordlists into one final file:
   ```bash
   cat list1.txt list2.txt list3.txt > all_word-lists.txt
   ```
+
+---
+
+### 🔍 json2paths
+
+This tool finds hidden endpoints, especially on APIs. It fetches JSON responses from BurpSuite history and creates url-paths wordlist from JSON keys.
+![j2p image](images/j2p.png)
+
+Installation:
+
+```bash
+pip3 install json2paths
+```
+
+**📤 Exporting BurpSuite History:**
+
+To export responses from BurpSuite:
+
+1. Select the responses you want **or select all responses**.
+2. Right-click the selection.
+3. Choose **"Save items..."** from the context menu.
+4. In the dialog, make sure **Base64 encoding is disabled**.
+
+### 🚀 **Usage**
+
+Run the tool on your exported history file to generate a wordlist of API paths from JSON keys.
+For more details... try it out and explore! 😉
+
+```bash
+Usage: j2p <options> <prefix>+<path to burp-file>
+
+Available options:
+  p: print paths
+  k: print keys
+
+<prefix>+ and <options> are optional.
+
+Examples:
+  > j2p -p test.txt
+  > j2p -pk /+test.txt
+```
+
 ---
 
 ## **Note: I will keep it updated always (Insha'Allah) 😊✨**
@@ -57,6 +101,7 @@ It’s created for my own use but shared publicly so others can benefit too.
 ---
 
 ## **🧑‍💻 Author & Socials**
+
 You can follow and connect with me through the following link:
 [All Links:](https://linktr.ee/1ZeroDay) 🌐.
 
