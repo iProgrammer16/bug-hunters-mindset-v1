@@ -45,7 +45,7 @@
       * using proxy interceptors
     *   Bypassing a file extension blacklist
 
-        <figure><img src="broken-reference" alt=""><figcaption><p><strong>Bypass file extension exclusion lists</strong></p></figcaption></figure>
+        <figure><img src=".gitbook/assets/file-upload-vuln1.png" alt=""><figcaption><p><strong>Bypass file extension exclusion lists</strong></p></figcaption></figure>
     *   Bypassing a file extension whitelist
 
         <figure><img src=".gitbook/assets/file-upload-vuln2.png" alt=""><figcaption><p><strong>Bypass file extension inclusion lists</strong></p></figcaption></figure>
