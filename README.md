@@ -8,9 +8,8 @@
 
 <h3 align="center"><strong>Vulnerabilities &#x26; Bypasses:</strong></h3>
 
-{% hint style="info" %}
-<p align="center">A collection of known vulnerability types with practical methods to bypass filters, protections, and common security mechanisms.</p>
-{% endhint %}
+> **Info:**
+> <p align="center">A collection of known vulnerability types with practical methods to bypass filters, protections, and common security mechanisms.</p>
 
 #### <sup>**V01.**</sup>**&#x20;Insecure file uploads: A complete guide to finding advanced file upload vulnerabilities:**
 
@@ -141,9 +140,9 @@ Content-Type: text/plain
 
 <h3 align="center"><strong>Hunting Techniques &#x26; Ideas:</strong></h3>
 
-{% hint style="info" %}
-<p align="center">General strategies, techniques, and creative approaches to help you discover more bugs and uncover hidden attack surfaces.</p>
-{% endhint %}
+> **Info:**
+> <p align="center">General strategies, techniques, and creative approaches to help you discover more bugs and uncover hidden attack surfaces.</p>
+
 
 #### <sup>**T01.**</sup>**&#x20;7 Overlooked recon techniques to find more vulnerabilities:**
 
