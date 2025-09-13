@@ -40,13 +40,13 @@ Content-Type: application/x-php
   * using proxy interceptors
 * Bypassing a file extension blacklist
 
-<figure><img src=".gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/file-upload-vuln1.png" alt=""><figcaption></figcaption></figure>
 
 <p align="center">Bypass file extension exclusion lists</p>
 
 * Bypassing a file extension whitelist
 
-<figure><img src=".gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/file-upload-vuln2.png" alt=""><figcaption></figcaption></figure>
 
 <p align="center">Bypass file extension inclusion lists</p>
 
