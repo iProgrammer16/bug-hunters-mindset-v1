@@ -43,10 +43,10 @@
      * using proxy interceptors
    *   Bypassing a file extension blacklist
 
-       <p align="center"><img src=".gitbook/assets/file-upload-vuln1.png" alt="Bypass file extension exclusion lists" data-size="original" width="900"><br><sub><strong>Bypass file extension exclusion lists</strong></sub></p>
+       <figure><img src=".gitbook/assets/file-upload-vuln1.png" alt="Bypass file extension exclusion lists"><figcaption><p><strong>Bypass file extension exclusion lists</strong></p></figcaption></figure>
    *   Bypassing a file extension whitelist
 
-       <p align="center"><img src=".gitbook/assets/file-upload-vuln2.png" alt="Bypass file extension inclusion lists" data-size="original" width="900"><br><sub><strong>Bypass file extension inclusion lists</strong></sub></p>
+       <figure><img src=".gitbook/assets/file-upload-vuln2.png" alt="Bypass file extension inclusion lists"><figcaption><p><strong>Bypass file extension inclusion lists</strong></p></figcaption></figure>
 
 If the file upload implementation determines your file type by the content type, you can also attempt to upload a file with a whitelisted file extension but with your malicious content type:
 
@@ -93,8 +93,6 @@ Content-Type: application/x-php
         ```sh
         89 50 4E 47 0D 0A 1A 0A
         ```
-
-
 
         ```http
         POST /Api/FileUpload.aspx HTTP/2
