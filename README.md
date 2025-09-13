@@ -43,17 +43,12 @@
           <input type="file" accept=".jpg, .jpeg, .png, .gif" />
           ```
       * using proxy interceptors
-    * Bypassing a file extension blacklist
+    *   Bypassing a file extension blacklist
 
-    <figure><img src=".gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+        <figure><img src=".gitbook/assets/image (2).png" alt=""><figcaption><p><strong>Bypass file extension exclusion lists</strong></p></figcaption></figure>
+    *   Bypassing a file extension whitelist
 
-    <p align="center">Bypass file extension exclusion lists</p>
-
-    * Bypassing a file extension whitelist
-
-
-
-<p align="center">Bypass file extension inclusion lists</p>
+        <figure><img src=".gitbook/assets/image (3).png" alt=""><figcaption><p><strong>Bypass file extension inclusion lists</strong></p></figcaption></figure>
 
 If the file upload implementation determines your file type by the content type, you can also attempt to upload a file with a whitelisted file extension but with your malicious content type:
 
