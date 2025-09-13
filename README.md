@@ -179,9 +179,10 @@ It is my pleasure and honor to have your support and follow-up. I look forward t
 
 Stay connected:
 
-* X Platform:  [iProgrammer16](https://x.com/iProgrammer16)
-* X Platform: [1ZeroDay](https://x.com/1ZeroDay)
-* LinkedIn: [Linkedin](https://www.linkedin.com/in/saleh16abdullah/)
-* Telegram Channel: [1ZeroDay](https://t.me/+ylDx8zGNLEwzMWU8)
-* For collaboration on HackerOne: [HackerOne Profile - iProgrammer16](https://hackerone.com/iprogrammer16)
-* All social links in one place: [Linktr](https://linktr.ee/1ZeroDay)
+* **X Platform:** [iProgrammer16](https://x.com/iProgrammer16)
+* **X Platform:** [1ZeroDay](https://x.com/1ZeroDay)
+* **LinkedIn:** [Linkedin](https://www.linkedin.com/in/saleh16abdullah/)
+* **Github:** [iProgrammer16](https://github.com/iProgrammer16)
+* **Telegram Channel:** [1ZeroDay](https://t.me/+ylDx8zGNLEwzMWU8)
+* **For collaboration on HackerOne:** [HackerOne Profile - iProgrammer16](https://hackerone.com/iprogrammer16)
+* **All social links in one place:** [Linktr](https://linktr.ee/1ZeroDay)
