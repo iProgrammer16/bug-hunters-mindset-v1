@@ -6,7 +6,7 @@
 
 ***
 
-<h3 align="center"><strong>Vulnerabilities &#x26; Bypasses:</strong></h3>
+<h3 align="center"><strong>Vulnerabilities &#x26; Bypasses</strong></h3>
 
 > **Info:**
 >
@@ -136,7 +136,7 @@ Content-Type: application/x-php
 
 ***
 
-<h3 align="center"><strong>Hunting Techniques &#x26; Ideas:</strong></h3>
+<h3 align="center"><strong>Hunting Techniques &#x26; Ideas</strong></h3>
 
 > **Info:**
 >
@@ -174,7 +174,7 @@ ffuf -u https://api.example.com/PATH -X METHOD -w /path/to/wordlist:PATH -w /pat
 
 ***
 
-<h3 align="center"><strong>Closing Note:</strong></h3>
+<h3 align="center"><strong>Closing Note</strong></h3>
 
 It is my pleasure and honor to have your support and follow-up. I look forward to exchanging knowledge and collaborating with you in the field of cybersecurity.
 
