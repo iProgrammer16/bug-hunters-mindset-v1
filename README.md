@@ -46,7 +46,7 @@
        <p align="center"><img src="broken-reference" alt="" data-size="original"><br><sub><strong>Bypass file extension exclusion lists</strong></sub></p>
    *   Bypassing a file extension whitelist
 
-       <p align="center"><img src="broken-reference" alt=""><br><sub><strong>Bypass file extension inclusion lists</strong></sub></p>
+       <p align="center"><img src="broken-reference" alt="" data-size="original"><br><sub><strong>Bypass file extension inclusion lists</strong></sub></p>
 
 If the file upload implementation determines your file type by the content type, you can also attempt to upload a file with a whitelisted file extension but with your malicious content type:
 
