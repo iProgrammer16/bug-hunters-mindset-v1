@@ -9,6 +9,7 @@
 <h3 align="center"><strong>Vulnerabilities &#x26; Bypasses:</strong></h3>
 
 > **Info:**
+>
 > <p align="center">A collection of known vulnerability types with practical methods to bypass filters, protections, and common security mechanisms.</p>
 
 #### <sup>**V01.**</sup>**&#x20;Insecure file uploads: A complete guide to finding advanced file upload vulnerabilities:**
@@ -130,19 +131,15 @@ Content-Type: text/plain
 
 ***
 
-#### <sup>**V02.**</sup> &#x20;
-
-
-
-
+#### <sup>**V02.**</sup>
 
 ***
 
 <h3 align="center"><strong>Hunting Techniques &#x26; Ideas:</strong></h3>
 
 > **Info:**
+>
 > <p align="center">General strategies, techniques, and creative approaches to help you discover more bugs and uncover hidden attack surfaces.</p>
-
 
 #### <sup>**T01.**</sup>**&#x20;7 Overlooked recon techniques to find more vulnerabilities:**
 
@@ -172,4 +169,19 @@ ffuf -u https://api.example.com/PATH -X METHOD -w /path/to/wordlist:PATH -w /pat
 
 ***
 
-#### <sup>**T02.**</sup> &#x20;
+#### <sup>**T02.**</sup>
+
+***
+
+<h3 align="center"><strong>Closing Note:</strong></h3>
+
+It is my pleasure and honor to have your support and follow-up. I look forward to exchanging knowledge and collaborating with you in the field of cybersecurity.
+
+Stay connected:
+
+* X Platform:  [iProgrammer16](https://x.com/iProgrammer16)
+* X Platform: [1ZeroDay](https://x.com/1ZeroDay)
+* LinkedIn: [Linkedin](https://www.linkedin.com/in/saleh16abdullah/)
+* Telegram Channel: [1ZeroDay](https://t.me/+ylDx8zGNLEwzMWU8)
+* For collaboration on HackerOne: [HackerOne Profile - iProgrammer16](https://hackerone.com/iprogrammer16)
+* All social links in one place: [Linktr](https://linktr.ee/1ZeroDay)
