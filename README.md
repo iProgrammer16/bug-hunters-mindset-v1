@@ -45,10 +45,18 @@
       * using proxy interceptors
     *   Bypassing a file extension blacklist
 
-        <figure><img src=".gitbook/assets/file-upload-vuln1.png" alt=""><figcaption><p><strong>Bypass file extension exclusion lists</strong></p></figcaption></figure>
+        <p align="center">
+          <img src=".gitbook/assets/file-upload-vuln1.png"><br>
+          <sub><strong>Bypass file extension exclusion lists</strong></sub>
+        </p>
+
     *   Bypassing a file extension whitelist
 
-        <figure><img src=".gitbook/assets/file-upload-vuln2.png" alt=""><figcaption><p><strong>Bypass file extension inclusion lists</strong></p></figcaption></figure>
+        <p align="center">
+          <img src=".gitbook/assets/file-upload-vuln2.png" width="600"><br>
+          <sub><strong>Bypass file extension inclusion lists</strong></sub>
+        </p>
+
 
 If the file upload implementation determines your file type by the content type, you can also attempt to upload a file with a whitelisted file extension but with your malicious content type:
 
